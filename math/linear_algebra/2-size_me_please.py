@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-import numpy as np
 """
 Calculate the shape of a matrix.
 Returns:
@@ -17,5 +16,8 @@ def matrix_shape(matrix):
     Returns:
     list: A list of integers representing the shape of the matrix.
     """
-    new_shape = np.shape(matrix)
-    return new_shape
+    shape = []
+    while isinstance(matrix, list):
+        shape.append(len(matrix))
+        matrix = matrix[0] if matrix else []
+    return shape
