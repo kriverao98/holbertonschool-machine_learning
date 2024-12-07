@@ -14,9 +14,7 @@ def add_arrays(arr1, arr2):
         list: A new array containing the element-wise sums of arr1 and arr2.
               If the arrays are not of the same length, returns None.
     """
-    res = []
-    for a, b in zip((arr1), (arr2)):
-        if len(arr1) == len(arr2):
-            return list(map(sum, zip(arr1, arr2)))
-        else:
-            return None
+    if len(arr1) == len(arr2):
+        return list(map(sum, zip(arr1, arr2)))
+    else:
+        return None
