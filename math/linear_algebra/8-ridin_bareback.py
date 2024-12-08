@@ -14,6 +14,8 @@ def mat_mul(mat1, mat2):
         list of list of int/float: The resulting matrix
         product of mat1 and mat2.
     """
+    if len(mat1[0]) != len(mat2):
+        return None
     result = []
     for i in range(0, len(mat1)):
         temp = []
