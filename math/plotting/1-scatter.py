@@ -10,8 +10,8 @@ def scatter():
 
     The function creates a scatter plot using a bivariate normal distribution
     with a specified mean and covariance matrix. The x-axis represents height
-    in inches, and the y-axis represents weight in pounds. The plot is displayed
-    with appropriate labels and title.
+    in inches, and the y-axis represents weight in pounds.
+    The plot is displayed with appropriate labels and title.
 
     Parameters:
     None
