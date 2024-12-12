@@ -3,12 +3,15 @@ import numpy as np
 import matplotlib.pyplot as plt
 """Plots a line graph of y = x^3 for x in the range [0, 10]."""
 
+
 def line():
     """
     Plots a line graph of y = x^3 for x in the range [0, 10].
 
-    The function creates a plot with the y-values being the cube of numbers from 0 to 10.
-    The plot is displayed with a red line for the y-axis values and the x-axis ranging from 0 to 10.
+    The function creates a plot with the y-values being the cube
+    of numbers from 0 to 10.
+    The plot is displayed with a red line for the y-axis values and the x-axis
+    ranging from 0 to 10.
     The figure size is set to 6.4 by 4.8 inches.
     """
 
