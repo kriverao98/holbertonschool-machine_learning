@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-import numpy as np
-import matplotlib.pyplot as plt
 """
 Plots a line graph of y = x^3 for x in the range [0, 10].
 """
+import numpy as np
+import matplotlib.pyplot as plt
 
 
 def line():
