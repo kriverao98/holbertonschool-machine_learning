@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 import numpy as np
 import matplotlib.pyplot as plt
-"""Plots a line graph of y = x^3 for x in the range [0, 10]."""
+"""
+Plots a line graph of y = x^3 for x in the range [0, 10].
+"""
 
 
 def line():
@@ -15,6 +17,7 @@ def line():
     The figure size is set to 6.4 by 4.8 inches.
     """
 
+    # Generate values and set figures
     y = np.arange(0, 11) ** 3
     plt.figure(figsize=(6.4, 4.8))
 
