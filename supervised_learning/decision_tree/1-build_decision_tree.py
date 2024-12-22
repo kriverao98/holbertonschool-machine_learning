@@ -35,6 +35,15 @@ class Node:
         return max(left_depth, right_depth)
 
     def count_nodes_below(self, only_leaves=False):
+        """
+        Count the number of nodes below the current node in the
+        decision tree.
+
+        Returns:
+        int: The number of nodes below the current node.
+        If only_leaves is True, returns the number of leaf nodes.
+        Otherwise, returns the total number of nodes.
+        """
         if only_leaves:
             if self.left_child is None and self.right_child is None:
                 return 1
@@ -70,9 +79,17 @@ class Leaf(Node):
         self.depth = depth
 
     def max_depth_below(self):
+        """
+        Returns the maximum depth
+        of the decision tree below the current node.
+        """
         return self.depth
 
     def count_nodes_below(self, only_leaves=False):
+        """
+        Counts the number of nodes below
+        the current node in the decision tree.
+        """
         return 1
 
 
@@ -95,7 +112,13 @@ class Decision_Tree:
         self.predict = None
 
     def depth(self):
+        """
+        Calculate the depth of the decision tree.
+        """
         return self.root.max_depth_below()
 
     def count_nodes(self, only_leaves=False):
+        """
+        Count the number of nodes in the decision tree.
+        """
         return self.root.count_nodes_below(only_leaves=only_leaves)
