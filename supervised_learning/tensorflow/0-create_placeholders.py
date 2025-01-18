@@ -3,7 +3,6 @@
 import tensorflow.compat.v1 as tf
 
 
-
 def create_placeholders(nx, classes):
     """
     Returns two placeholders, x and y, for the neural network.
