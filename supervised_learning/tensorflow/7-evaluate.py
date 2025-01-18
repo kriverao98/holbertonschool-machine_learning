@@ -4,7 +4,6 @@ Evaluates a trained model and makes
 predictions on the given data.
 """
 import tensorflow.compat.v1 as tf
-import numpy as np
 
 
 def evaluate(X, Y, save_path):
