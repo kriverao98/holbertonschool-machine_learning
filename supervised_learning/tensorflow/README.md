@@ -1,0 +1,3 @@
+# TensorFlow Projects
+
+This folder contains projects and exercises related to supervised learning using TensorFlow. The projects are part of the Holberton School Machine Learning Specialization curriculum. Each project focuses on different aspects of TensorFlow, including building and training neural networks, implementing various machine learning algorithms, and optimizing models for better performance.
