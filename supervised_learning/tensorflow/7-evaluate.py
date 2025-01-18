@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Script that evaluates a DNN in tf"""
 
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 
 
 def evaluate(X, Y, save_path):
