@@ -1,32 +1,31 @@
 #!/usr/bin/env python3
-"""
-Evaluates a trained model and makes
-predictions on the given data.
-"""
-import tensorflow.compat.v1 as tf
+"""Script that evaluates a DNN in tf"""
+
+import tensorflow as tf
 
 
 def evaluate(X, Y, save_path):
     """
-    Evaluates a trained model and makes predictions on the given data.
+    Method to evaluate a DNN
     Args:
-        X (numpy.ndarray): Input data to evaluate the model on.
-        Y (numpy.ndarray): True labels corresponding to the input data.
-        save_path (str): Path where the trained model is saved.
-    Returns:
-        tuple: A tuple containing:
-            - predictions (numpy.ndarray):
-            The predicted values for the input data.
-            - accuracy (float): The accuracy of the model on the given data.
-            - loss (float): The loss of the model on the given data.
+        X: input data
+        Y: labels from X
+        save_path: Location of trained model
+
+    Returns: Evaluated model
+
     """
-    # Load the model
-    model = tf.keras.models.load_model(save_path)
+    with tf.Session() as sess:
+        saver = tf.train.import_meta_graph("{}.meta".format(save_path))
+        saver.restore(sess, save_path)
+        #  tf.get_collection() returns a list. Retrieve only the 1st one
+        x = tf.get_collection("x")[0]
+        y = tf.get_collection("y")[0]
+        y_pred = tf.get_collection("y_pred")[0]
+        accuracy = tf.get_collection("accuracy")[0]
+        loss = tf.get_collection("loss")[0]
 
-    # Evaluate the model
-    loss, accuracy = model.evaluate(X, Y, verbose=0)
-
-    # Make predictions
-    predictions = model.predict(X)
-
-    return predictions, accuracy, loss
+        eval_y_pred = sess.run(y_pred, feed_dict={x: X, y: Y})
+        eval_accuracy = sess.run(accuracy, feed_dict={x: X, y: Y})
+        eval_loss = sess.run(loss, feed_dict={x: X, y: Y})
+        return eval_y_pred, eval_accuracy, eval_loss
