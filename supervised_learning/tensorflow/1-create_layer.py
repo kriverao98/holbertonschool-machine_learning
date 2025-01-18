@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-import tensorflow.compat.v1 as tf
 """Creates a dense layer for a neural network using TensorFlow."""
+import tensorflow.compat.v1 as tf
 
 
 def create_layer(prev, n, activation):
