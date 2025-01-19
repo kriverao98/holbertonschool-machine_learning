@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """Tests a neural network."""
 import tensorflow.keras as K
 
