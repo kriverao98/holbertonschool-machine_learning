@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
-"""Optimization project"""
+"""
+    Optimization project
+"""
 import tensorflow as tf
 
 
@@ -16,12 +18,20 @@ def create_batch_norm_layer(prev, n, activation):
 
         Returns: normlized Z matrix
     """
-    k = tf.contrib.layers.variance_scaling_initializer(mode="FAN_AVG")
-    base = tf.layers.Dense(n, kernel_initializer=k)
-    mean, var = tf.nn.moments(base(prev), axes=[0])
-    gamma = tf.Variable(tf.ones([n]), trainable=True)
-    beta = tf.Variable(tf.zeros([n]), trainable=True)
-    epsilon = 1e-8
-    batch_norm = tf.nn.batch_normalization(base(prev), mean, var,
-                                           beta, gamma, epsilon)
-    return activation(batch_norm)
+    init = tf.contrib.layers.variance_scaling_initializer(mode="FAN_AVG")
+    x = tf.layers.Dense(units=n, activation=None, kernel_initializer=init)
+    x_prev = x(prev)
+    scale = tf.Variable(tf.constant(1.0, shape=[n]), name='gamma')
+    mean, variance = tf.nn.moments(x_prev, axes=[0])
+    offset = tf.Variable(tf.constant(0.0, shape=[n]), name='beta')
+    variance_epsilon = 1e-8
+
+    normalization = tf.nn.batch_normalization(
+        x_prev,
+        mean,
+        variance,
+        offset,
+        scale,
+        variance_epsilon,
+    )
+    return activation(normalization)
