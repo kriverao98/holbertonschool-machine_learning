@@ -14,7 +14,7 @@ random.seed(SEED)
 np.random.seed(SEED)
 tf.random.set_seed(SEED)
 
-create_RMSProp_op = __import__('8-RMSProp').create_RMSProp_op
+create_Adam_op = __import__('10-Adam').create_Adam_op
 
 def one_hot(Y, classes):
     """convert an array to a one-hot matrix"""
@@ -30,8 +30,9 @@ Y_oh=one_hot(Y,10)
 
 model = tf.keras.models.load_model('model.h5', compile=False)
 
-optimizer=create_RMSProp_op(0.001, 0.9, 1e-07)
+optimizer=create_Adam_op(0.001, 0.9, 0.999, 1e-7)
 
+# Training function
 @tf.function
 def train_step(inputs, labels):
     with tf.GradientTape() as tape:
