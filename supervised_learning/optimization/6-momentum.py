@@ -1,20 +1,19 @@
 #!/usr/bin/env python3
-"""Sets up the gradient descent with momentum optimization
-algorithm in TensorFlow."""
+"""Script of momentum in Tensorflow"""
+
 import tensorflow as tf
 
 
-def create_momentum_op(alpha, beta1):
+def create_momentum_op(loss, alpha, beta1):
     """
-    Sets up the gradient descent with momentum optimization
-    algorithm in TensorFlow.
+    Function to train a DNN with TF momentum optimization
+    Args:
+        loss: loss of the network
+        alpha: learning rate
+        beta1: momentum weight
 
-    Parameters:
-    alpha (float): The learning rate.
-    beta1 (float): The momentum weight.
+    Returns: momentum optimization operation
 
-    Returns:
-    optimizer: The momentum optimizer operation.
     """
-    optimizer = tf.train.MomentumOptimizer(learning_rate=alpha, momentum=beta1)
+    optimizer = tf.train.MomentumOptimizer(alpha, beta1).minimize(loss)
     return optimizer
