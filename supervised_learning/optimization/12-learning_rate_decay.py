@@ -10,8 +10,10 @@ def learning_rate_decay(alpha, decay_rate, decay_step):
         using inverse time decay
 
         alpha is the original learning rate
-        decay_rate is the weight used to determine the rate at which alpha will decay
-        decay_step is the number of passes of gradient descent that should occur before alpha is decayed further
+        decay_rate is the weight used to determine the rate at
+        which alpha will decay
+        decay_step is the number of passes of gradient descent
+        that should occur before alpha is decayed further
 
         Returns: the learning rate decay operation
     """
