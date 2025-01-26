@@ -18,7 +18,6 @@ def learning_rate_decay(alpha, decay_rate,
 
         Returns: updated value for alpha
     """
-    opt = tf.train.inverse_time_decay(alpha, global_step,
-                                      decay_step, decay_rate,
-                                      staircase=True)
-    return opt
+    LRD = tf.train.inverse_time_decay(alpha, global_step, decay_step,
+                                      decay_rate, staircase=True)
+    return LRD
